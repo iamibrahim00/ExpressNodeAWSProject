@@ -1,24 +1,26 @@
+
 let btn = document.getElementById('submit')
 btn.addEventListener('click',Storage)
 function Storage(event) {
     event.preventDefault();
-    const Name= document.getElementById('name').value;
-    const Email = document.getElementById('email').value;
-    const Password =document.getElementById('password').value;
+    const name= document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password =document.getElementById('password').value;
 
 
   const obj={
-  Name,
-  Email,
-  Password
+  name,
+  email,
+  password
   }
-  console.log(obj)
-  axios.post("http://localhost:3000/user/signup",obj)
-  .then((response) => {
-      console.log(newExpenseDetails)
-     // console.log(newExpenseDetails)
-  }).catch(err => {
-      document.body.innerHTML =document.body.innerHTML + "<h4>Something Went wrong </h4>"
-  })
 
+  console.log(obj)
+  axios.post("http://localhost:4000/user/signup",obj)
+  .then((response) => {
+     // showUserOnScreen(response.data.newExpenseDetails)
+      console.log(response)
+  }).catch((err) => {
+   
+      document.body.innerHTML =document.body.innerHTML + "<h4>Email Already Exist</h4>"
+  })
 }

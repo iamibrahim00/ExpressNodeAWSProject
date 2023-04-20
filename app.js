@@ -11,7 +11,7 @@ var cors = require('cors')
 var jsonParser = bodyParser.json()
 
 const app = express();
-app.use(cors()) 
+app.use(cors())  
 
 
 const userRoutes = require('./routes/expense')

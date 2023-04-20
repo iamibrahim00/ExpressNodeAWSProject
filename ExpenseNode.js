@@ -17,10 +17,10 @@ function Storage(event) {
   console.log(obj)
   axios.post("http://localhost:4000/user/signup",obj)
   .then((response) => {
-     // showUserOnScreen(response.data.newExpenseDetails)
+
       console.log(response)
   }).catch((err) => {
    
-      document.body.innerHTML =document.body.innerHTML + "<h4>Email Already Exist</h4>"
+      document.body.innerHTML =document.body.innerHTML + "<h4>Err: Email Already Exist</h4>"
   })
 }

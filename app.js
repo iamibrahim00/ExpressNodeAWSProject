@@ -15,14 +15,14 @@ app.use(cors())
 
 
 const userRoutes = require('./routes/expense')
-
+const loginoRoutes = require('./routes/login')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(jsonParser)
 
 app.use(userRoutes)
-
+app.use(loginoRoutes)
 
 sequelize
   .sync()

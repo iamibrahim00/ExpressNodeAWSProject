@@ -1,6 +1,7 @@
 const e = require('express');
 const User = require('../models/User');
 const { Error } = require('sequelize');
+const bcrypt = require('bcrypt')
 
 exports.postExpense = async (req,res,next) =>{
      try{
@@ -18,14 +19,20 @@ exports.postExpense = async (req,res,next) =>{
                 })
             }
             else{
+                const saltrounds = 10
                 const name = req.body.name;
                 console.log(name)
                 const email = req.body.email;
                 const password = req.body.password;
-                const data = await User.create({
-                    name :name,
-                    email : email,
-                    password: password});
+
+                bcrypt.hash(password,saltrounds,async(err,hash)=>{
+                    const data = await User.create({
+                        name :name,
+                        email : email,
+                        password: hash});
+                        res.status(200).json({message:"Successfully created new user"})
+                })
+            
                }
 
      }catch(err){

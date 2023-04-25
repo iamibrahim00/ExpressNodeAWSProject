@@ -2,8 +2,8 @@ const path = require('path');
 
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const User =require('./models/User')
+const bcrypt = require('bcrypt')
 
 const sequelize = require('./util/database');
 
@@ -23,6 +23,7 @@ app.use(jsonParser)
 
 app.use(userRoutes)
 app.use(loginoRoutes)
+
 
 sequelize
   .sync()
